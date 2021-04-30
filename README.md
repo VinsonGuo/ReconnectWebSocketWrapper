@@ -34,7 +34,7 @@ other api:
     // set reconnection configuration
     webSocketWrapper.config = Config()
 
-    // if reconnection url different with initial url, you can rebuild a request from this listener
+    // if reconnection url differ with initial url, you can rebuild a request from this listener
     webSocketWrapper.onPreReconnectListener = { request -> 
         // to build your request
         request
