@@ -2,7 +2,6 @@ package com.vinsonguo.reconnectwebsocketwrapper;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -10,14 +9,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.vinsonguo.reconnectwebsocketwrapper.lib.ReconnectWebSocketWrapper;
-import com.vinsonguo.reconnectwebsocketwrapper.lib.Status;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.TimeUnit;
 
-import kotlin.Unit;
-import kotlin.jvm.functions.Function1;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -76,7 +72,7 @@ public class MainActivityJava extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ws.setOnConnectStatusChangeListener(status -> {
-            tvLog.append("\n status: " + status);
+            runOnUiThread(() -> tvLog.append("\n status: " + status));
             return null;
         });
         tvLog = findViewById(R.id.tvLog);

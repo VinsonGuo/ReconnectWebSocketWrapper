@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.vinsonguo.reconnectwebsocketwrapper.lib.Config
 import com.vinsonguo.reconnectwebsocketwrapper.lib.ReconnectWebSocketWrapper
 import okhttp3.*
 import okio.ByteString
@@ -58,6 +59,11 @@ class MainActivity : AppCompatActivity() {
             runOnUiThread {
                 tvLog.append("\n connect status: $it")
             }
+        }
+        webSocketWrapper.config = Config()
+        webSocketWrapper.onPreReconnectListener = {request ->
+            // to build your request
+            request
         }
         webSocketWrapper
     }
